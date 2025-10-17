@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV - Ponto de Venda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .grid-pdv {
+            grid-template-columns: 2fr 1fr;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 text-white flex flex-col">
+        <div class="p-4 text-2xl font-bold border-b border-gray-700">
+            Sistema de Gestão
+        </div>
+        <nav class="flex-1">
+            <a href="dashboard.html" class="block py-2.5 px-4 transition duration-200 hover:bg-gray-700">Dashboard</a>
+            <a href="insumos.html" class="block py-2.5 px-4 transition duration-200 hover:bg-gray-700">Insumos</a>
+            <a href="produtos.html" class="block py-2.5 px-4 transition duration-200 hover:bg-gray-700">Produtos</a>
+            <a href="fichas_tecnicas.html" class="block py-2.5 px-4 transition duration-200 hover:bg-gray-700">Fichas Técnicas</a>
+            <a href="vendas.html" class="block py-2.5 px-4 transition duration-200 hover:bg-gray-700">Relatório de Vendas</a>
+            <a href="pdv.html" class="block py-2.5 px-4 bg-gray-900">PDV - Caixa</a>
+        </nav>
+        <div class="p-4 border-t border-gray-700">
+            <a href="index.html" class="text-sm text-red-400 hover:text-red-500">Sair</a>
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Ponto de Venda (PDV) - Caixa</h1>
+        
+        <div class="grid grid-pdv gap-8">
+            
+            <!-- Coluna de Produtos -->
+            <div class="bg-white p-6 rounded-lg shadow-lg h-full">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Produtos Disponíveis</h2>
+                <input type="text" id="search-produto" placeholder="Buscar produto..." class="w-full p-2 border border-gray-300 rounded-md mb-4 focus:ring-purple-500 focus:border-purple-500">
+                
+                <div id="produtos-list" class="grid grid-cols-3 gap-4 overflow-y-auto h-[70vh]">
+                    <!-- Cards de Produtos serão inseridos aqui pelo JavaScript -->
+                    <div class="bg-gray-50 p-4 rounded-lg shadow hover:shadow-md transition duration-150 cursor-pointer text-center border border-gray-200" data-produto-id="1" data-preco="15.00">
+                        <p class="font-bold text-lg">Produto Exemplo</p>
+                        <p class="text-purple-600 font-semibold">R$ 15,00</p>
+                        <button class="mt-2 text-sm bg-purple-500 text-white px-2 py-1 rounded hover:bg-purple-600">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna do Carrinho e Finalização -->
+            <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Carrinho de Compras</h2>
+                
+                <!-- Lista do Carrinho -->
+                <div id="carrinho-list" class="flex-1 overflow-y-auto mb-4 space-y-3">
+                    <!-- Itens do carrinho serão inseridos aqui pelo JavaScript -->
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-semibold">2x</span>
+                            <span>Produto Exemplo</span>
+                        </div>
+                        <span class="font-bold">R$ 30,00</span>
+                    </div>
+                </div>
+
+                <!-- Resumo e Total -->
+                <div class="border-t pt-4 space-y-2">
+                    <div class="flex justify-between text-lg font-semibold">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-display">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-purple-600">
+                        <span>TOTAL:</span>
+                        <span id="total-display">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <!-- Botão de Finalizar -->
+                <button id="finalizar-venda-btn" class="mt-6 w-full py-3 bg-green-500 text-white text-xl font-bold rounded-lg hover:bg-green-600 transition duration-200">
+                    Finalizar Venda
+                </button>
+                <button id="limpar-carrinho-btn" class="mt-2 w-full py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition duration-200">
+                    Limpar Carrinho
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/pdv.js"></script>
+</body>
+</html>
